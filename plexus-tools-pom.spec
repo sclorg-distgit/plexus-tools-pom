@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0.11
-Release:        8.11%{?dist}
+Release:        8.12%{?dist}
 Summary:        Plexus Tools POM
 BuildArch:      noarch
 License:        ASL 2.0
@@ -15,7 +15,7 @@ Source0:        http://repo.maven.apache.org/maven2/org/codehaus/plexus/%{short_
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-plexus-pom
+BuildRequires:  %{?scl_prefix}plexus-pom
 
 %description
 This package provides Plexus Tools parent POM used by different
@@ -23,7 +23,7 @@ Plexus packages.
 
 %prep
 %setup -c -T
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 cp -p %{SOURCE0} pom.xml
 cp -p %{SOURCE1} LICENSE
@@ -35,13 +35,13 @@ cp -p %{SOURCE1} LICENSE
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -51,6 +51,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.11-8.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0.11-8.11
 - maven33 rebuild
 
