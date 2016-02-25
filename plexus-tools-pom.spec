@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0.11
-Release:        8.12%{?dist}
+Release:        8.13%{?dist}
 Summary:        Plexus Tools POM
 BuildArch:      noarch
 License:        ASL 2.0
@@ -14,7 +14,7 @@ URL:            http://plexus.codehaus.org/%{short_name}
 Source0:        http://repo.maven.apache.org/maven2/org/codehaus/plexus/%{short_name}/%{version}/%{short_name}-%{version}.pom
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}plexus-pom
 
 %description
@@ -51,6 +51,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0.11-8.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.11-8.12
 - maven33 rebuild #2
 
